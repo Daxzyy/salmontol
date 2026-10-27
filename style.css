@@ -338,3 +338,84 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+.school-card {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 20px;
+}
+
+.school-logo {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.school-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.school-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.school-name {
+    margin-top: 4px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+    word-break: break-word;
+}
+
+.school-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: var(--accent);
+    color: #e9efe9;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.school-link i {
+    font-size: 10px;
+}
+
+.school-link:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+    .school-card {
+        gap: 14px;
+        padding: 16px;
+    }
+
+    .school-logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+    }
+
+    .school-name {
+        font-size: 15px;
+    }
+}
