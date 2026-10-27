@@ -10,13 +10,11 @@
     --muted: #686354;
     --accent: #2f5d50;
     --accent-soft: #cfdcd5;
-    --link: #1f5a94;
     --wa: #2f8a5b;
     --warn-bg: #e9dcbb;
     --warn-border: #d2bc84;
     --warn-text: #75490a;
-    --radius: 14px;
-    --shadow: 0 1px 2px rgba(39, 37, 31, 0.06), 0 4px 14px rgba(39, 37, 31, 0.05);
+    --radius: 10px;
 }
 
 * {
@@ -48,7 +46,7 @@ body {
     border: 1px solid var(--warn-border);
     border-radius: var(--radius);
     padding: 18px;
-    margin-bottom: 28px;
+    margin-bottom: 16px;
     text-align: center;
 }
 
@@ -72,10 +70,9 @@ body {
     width: 100%;
     height: 190px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 8px;
     border: 1px solid var(--warn-border);
     background: var(--surface);
-    box-shadow: var(--shadow);
     filter: brightness(0.95);
 }
 
@@ -98,74 +95,28 @@ body {
     background: var(--border);
 }
 
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-}
-
-.list {
+.school-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 16px 18px;
-    box-shadow: var(--shadow);
-    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
-}
-
-.list:hover {
-    border-color: var(--border-strong);
-    background: var(--surface-hover);
-    transform: translateY(-2px);
-}
-
-.list span {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-.text,
-.map {
-    color: var(--text);
-    font-size: 14px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 6px;
-    word-break: break-word;
-}
-
-.text i,
-.map i {
-    color: var(--accent);
-    width: 18px;
-    text-align: center;
-    flex-shrink: 0;
-}
-
-.school-card {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 18px 20px;
 }
 
 .school-logo {
-    width: 72px;
-    height: 72px;
+    width: 64px;
+    height: 64px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 9px;
+    padding: 8px;
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: 8px;
 }
 
 .school-logo img {
@@ -180,8 +131,8 @@ body {
 }
 
 .school-name {
-    margin-top: 4px;
-    font-size: 17px;
+    margin-top: 2px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 1.3;
     color: var(--text);
@@ -191,16 +142,12 @@ body {
 .school-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 12px;
-    padding: 8px 16px;
-    background: var(--accent);
-    color: #e9efe9;
-    border-radius: 999px;
+    gap: 6px;
+    margin-top: 8px;
     font-size: 12px;
     font-weight: 600;
+    color: var(--accent);
     text-decoration: none;
-    transition: filter 0.2s ease, transform 0.2s ease;
 }
 
 .school-link i {
@@ -208,78 +155,95 @@ body {
 }
 
 .school-link:hover {
-    filter: brightness(1.12);
-    transform: translateY(-1px);
+    text-decoration: underline;
 }
 
-.contact-card {
-    grid-column: 1 / -1;
+.info-list {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.info-row {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
+    gap: 14px;
+    padding: 13px 16px;
+    border-top: 1px solid var(--border);
+    color: inherit;
+    text-decoration: none;
 }
 
-.contact-icon {
-    width: 48px;
-    height: 48px;
+.info-row:first-child {
+    border-top: 0;
+}
+
+a.info-row:hover {
+    background: var(--surface-hover);
+}
+
+.info-icon {
+    width: 20px;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--wa);
-    color: #eaf3ec;
-    border-radius: 14px;
-    font-size: 25px;
+    font-size: 15px;
+    text-align: center;
+    color: var(--accent);
 }
 
-.contact-info {
+.info-icon-wa {
+    font-size: 19px;
+    color: var(--wa);
+}
+
+.info-body {
     min-width: 0;
     flex: 1;
 }
 
-.contact-number {
-    margin-top: 2px;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    color: var(--text);
-    font-variant-numeric: tabular-nums;
-    word-break: break-all;
+.info-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
 }
 
-.contact-action {
+.info-value {
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    word-break: break-word;
+}
+
+.info-number {
+    font-variant-numeric: tabular-nums;
+}
+
+.info-action {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 0;
-    padding: 10px 18px;
-    background: var(--wa);
-    color: #eaf3ec;
-    border-radius: 999px;
     font-size: 13px;
     font-weight: 600;
-    text-decoration: none;
-    transition: filter 0.2s ease, transform 0.2s ease;
+    color: var(--accent);
 }
 
-.contact-action i {
+.info-action i {
     font-size: 11px;
-    transition: transform 0.2s ease;
 }
 
-.contact-action:hover {
-    filter: brightness(1.1);
-}
-
-.contact-action:hover i {
-    transform: translateX(3px);
+a.info-row:hover .info-action {
+    text-decoration: underline;
 }
 
 summary {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius);
     padding: 13px 16px;
     cursor: pointer;
     font-size: 13px;
@@ -288,7 +252,6 @@ summary {
     text-align: center;
     list-style: none;
     margin: 28px 0 16px;
-    box-shadow: var(--shadow);
     transition: background 0.2s ease, border-color 0.2s ease;
 }
 
@@ -318,23 +281,17 @@ details[open] summary {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 8px;
     border: 1px solid var(--border);
     background: var(--surface);
     filter: brightness(0.95);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.image-container img:hover {
-    transform: scale(1.02);
-    box-shadow: var(--shadow);
 }
 
 .swal2-popup {
     background: var(--surface) !important;
     border: 1px solid var(--border) !important;
-    border-radius: 18px !important;
-    box-shadow: 0 20px 50px rgba(39, 37, 31, 0.22) !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
 }
 
@@ -352,7 +309,7 @@ details[open] summary {
     background: var(--bg) !important;
     border: 1px solid var(--border) !important;
     color: var(--text) !important;
-    border-radius: 10px !important;
+    border-radius: 8px !important;
     box-shadow: none !important;
 }
 
@@ -404,12 +361,12 @@ details[open] summary {
     color: #e9efe9 !important;
     font-weight: 600 !important;
     padding: 11px 28px !important;
-    border-radius: 10px !important;
+    border-radius: 8px !important;
     box-shadow: none !important;
 }
 
 .swal2-cancel {
-    border-radius: 10px !important;
+    border-radius: 8px !important;
     font-weight: 600 !important;
 }
 
@@ -451,43 +408,22 @@ footer {
         padding-top: 24px;
     }
 
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-
     .school-card {
         gap: 14px;
-        padding: 16px;
+        padding: 14px 16px;
     }
 
     .school-logo {
-        width: 60px;
-        height: 60px;
-        border-radius: 14px;
+        width: 56px;
+        height: 56px;
     }
 
     .school-name {
         font-size: 15px;
     }
 
-    .contact-card {
+    .info-row {
         gap: 12px;
-        padding: 14px 16px;
-    }
-
-    .contact-icon {
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        font-size: 22px;
-    }
-
-    .contact-number {
-        font-size: 15px;
-    }
-
-    .contact-action {
-        padding: 9px 14px;
-        font-size: 12px;
+        padding: 12px 14px;
     }
 }
