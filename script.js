@@ -1,5 +1,7 @@
 const SESSION_KEY = 'vault_session';
 const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
+const SCHOOL_URL = 'https://sman2-tegineneng.sch.id/';
+const SCHOOL_ICON_URL = 'https://sman2-tegineneng.sch.id/storage/setting/icon.png';
 
 const ICON_VISIBILITY_ON = '<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>';
 
@@ -80,11 +82,22 @@ function renderContent(data) {
     </div>
 
     <div class="info-grid">
+        <div class="list school-card">
+            <div class="school-logo">
+                <img src="${SCHOOL_ICON_URL}" alt="School logo" onerror="this.parentElement.style.display='none'">
+            </div>
+            <div class="school-info">
+                <span>School</span>
+                <div class="school-name">${data.school}</div>
+                <a class="school-link" href="${SCHOOL_URL}" target="_blank" rel="noopener">
+                    Kunjungi website <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
         <div class="list"><span>Name</span><div class="text"><i class="fa-solid fa-user-tie"></i> ${data.name}</div></div>
         <div class="list"><span>Residence</span><div class="map"><i class="fa-solid fa-location-dot"></i> ${data.residence}</div></div>
         <div class="list"><span>DOB / Age</span><div class="text"><i class="fa-solid fa-cake-candles"></i> ${data.dob} (${age} Tahun)</div></div>
         <div class="list"><span>Religion</span><div class="text"><i class="fa-solid fa-kaaba"></i> ${data.religion}</div></div>
-        <div class="list"><span>School</span><div class="text"><i class="fa-solid fa-school"></i> ${data.school}</div></div>
         <div class="list"><span>WhatsApp</span><div class="link"><i class="fab fa-whatsapp"></i> <a href="${phoneLink}" target="_blank" rel="noopener">${data.phone}</a></div></div>
         <div class="list"><span>Father's Name</span><div class="text"><i class="fa-solid fa-person"></i> ${data.father}</div></div>
         <div class="list"><span>Mother's Name</span><div class="text"><i class="fa-solid fa-person-dress"></i> ${data.mother}</div></div>
