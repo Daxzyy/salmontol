@@ -243,6 +243,45 @@ details[open] summary {
     border-color: var(--accent) !important;
 }
 
+.password-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 1em 2em 3px;
+}
+
+.password-field .swal2-input {
+    width: 100% !important;
+    margin: 0 !important;
+    padding-right: 46px !important;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.password-toggle:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
 .swal2-confirm {
     background: var(--accent) !important;
     color: #e9efe9 !important;
