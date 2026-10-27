@@ -63,6 +63,29 @@ function calculateAge(birthDate) {
     return age;
 }
 
+function createInfoRow(icon, label, value) {
+    return `
+        <div class="info-row">
+            <i class="${icon} info-icon"></i>
+            <div class="info-body">
+                <span class="info-label">${label}</span>
+                <div class="info-value">${value}</div>
+            </div>
+        </div>`;
+}
+
+function createWhatsAppRow(phone, link) {
+    return `
+        <a class="info-row" href="${link}" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp info-icon info-icon-wa"></i>
+            <div class="info-body">
+                <span class="info-label">WhatsApp</span>
+                <div class="info-value info-number">${phone}</div>
+            </div>
+            <span class="info-action">Chat <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </a>`;
+}
+
 function renderContent(data) {
     const age = calculateAge(new Date('2008-04-05'));
     const phoneLink = `https://wa.me/${data.phone.replace(/[^0-9+]/g, '')}?text=p`;
@@ -81,40 +104,32 @@ function renderContent(data) {
         </div>
     </div>
 
-    <div class="info-grid">
-        <div class="list school-card">
-            <div class="school-logo">
-                <img src="${SCHOOL_ICON_URL}" alt="School logo" onerror="this.parentElement.style.display='none'">
-            </div>
-            <div class="school-info">
-                <span>School</span>
-                <div class="school-name">${data.school}</div>
-                <a class="school-link" href="${SCHOOL_URL}" target="_blank" rel="noopener">
-                    Kunjungi website <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
+    <div class="school-card">
+        <div class="school-logo">
+            <img src="${SCHOOL_ICON_URL}" alt="School logo" onerror="this.parentElement.style.display='none'">
         </div>
-        <div class="list contact-card">
-            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-            <div class="contact-info">
-                <span>WhatsApp</span>
-                <div class="contact-number">${data.phone}</div>
-            </div>
-            <a class="contact-action" href="${phoneLink}" target="_blank" rel="noopener">
-                Chat <i class="fa-solid fa-arrow-right"></i>
+        <div class="school-info">
+            <span class="info-label">School</span>
+            <div class="school-name">${data.school}</div>
+            <a class="school-link" href="${SCHOOL_URL}" target="_blank" rel="noopener">
+                Kunjungi website <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </a>
         </div>
-        <div class="list"><span>Name</span><div class="text"><i class="fa-solid fa-user-tie"></i> ${data.name}</div></div>
-        <div class="list"><span>Residence</span><div class="map"><i class="fa-solid fa-location-dot"></i> ${data.residence}</div></div>
-        <div class="list"><span>DOB / Age</span><div class="text"><i class="fa-solid fa-cake-candles"></i> ${data.dob} (${age} Tahun)</div></div>
-        <div class="list"><span>Religion</span><div class="text"><i class="fa-solid fa-kaaba"></i> ${data.religion}</div></div>
-        <div class="list"><span>Father's Name</span><div class="text"><i class="fa-solid fa-person"></i> ${data.father}</div></div>
-        <div class="list"><span>Mother's Name</span><div class="text"><i class="fa-solid fa-person-dress"></i> ${data.mother}</div></div>
-        <div class="list"><span>Skin</span><div class="text"><i class="fa-solid fa-user"></i> ${data.skin}</div></div>
-        <div class="list"><span>Brain Status</span><div class="text"><i class="fa-solid fa-brain"></i> ${data.brain}</div></div>
-        <div class="list"><span>Attitude</span><div class="text"><i class="fa-solid fa-mask"></i> ${data.attitude}</div></div>
-        <div class="list"><span>Vocabulary</span><div class="text"><i class="fa-solid fa-book"></i> ${data.vocab}</div></div>
-        <div class="list"><span>Ex-Partners</span><div class="text"><i class="fa-solid fa-heart-crack"></i> ${data.ex}</div></div>
+    </div>
+
+    <div class="info-list">
+        ${createInfoRow('fa-solid fa-user-tie', 'Name', data.name)}
+        ${createInfoRow('fa-solid fa-location-dot', 'Residence', data.residence)}
+        ${createInfoRow('fa-solid fa-cake-candles', 'DOB / Age', `${data.dob} (${age} Tahun)`)}
+        ${createInfoRow('fa-solid fa-kaaba', 'Religion', data.religion)}
+        ${createWhatsAppRow(data.phone, phoneLink)}
+        ${createInfoRow('fa-solid fa-person', "Father's Name", data.father)}
+        ${createInfoRow('fa-solid fa-person-dress', "Mother's Name", data.mother)}
+        ${createInfoRow('fa-solid fa-user', 'Skin', data.skin)}
+        ${createInfoRow('fa-solid fa-brain', 'Brain Status', data.brain)}
+        ${createInfoRow('fa-solid fa-mask', 'Attitude', data.attitude)}
+        ${createInfoRow('fa-solid fa-book', 'Vocabulary', data.vocab)}
+        ${createInfoRow('fa-solid fa-heart-crack', 'Ex-Partners', data.ex)}
     </div>
 
     <details>
