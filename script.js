@@ -115,20 +115,9 @@ function showContent(data) {
     hideLoadingOverlay();
 }
 
-function attachVisibilityToggle() {
-    const input = Swal.getInput();
-    if (!input) return;
-
-    const wrapper = document.createElement('div');
-    wrapper.className = 'password-field';
-    input.parentNode.insertBefore(wrapper, input);
-    wrapper.appendChild(input);
-
-    const toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.className = 'password-toggle';
-    toggle.setAttribute('aria-label', 'Show password');
-    toggle.innerHTML = ICON_VISIBILITY_OFF;
+function bindVisibilityToggle() {
+    const input = document.getElementById('vault-password');
+    const toggle = document.getElementById('vault-password-toggle');
 
     toggle.addEventListener('click', () => {
         const isHidden = input.type === 'password';
@@ -138,7 +127,11 @@ function attachVisibilityToggle() {
         input.focus();
     });
 
-    wrapper.appendChild(toggle);
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') Swal.clickConfirm();
+    });
+
+    input.focus();
 }
 
 function showPasswordPrompt() {
@@ -146,12 +139,24 @@ function showPasswordPrompt() {
 
     Swal.fire({
         title: 'Enter password',
-        input: 'password',
-        inputPlaceholder: 'Password',
+        html: `
+            <div class="password-field">
+                <input id="vault-password" class="swal2-input" type="password" placeholder="Password" autocomplete="current-password">
+                <button id="vault-password-toggle" class="password-toggle" type="button" aria-label="Show password">${ICON_VISIBILITY_OFF}</button>
+            </div>
+        `,
         confirmButtonText: 'Unlock',
         allowOutsideClick: false,
         backdrop: 'rgba(217, 213, 200, 0.96)',
-        didOpen: attachVisibilityToggle
+        didOpen: bindVisibilityToggle,
+        preConfirm: () => {
+            const value = document.getElementById('vault-password').value;
+            if (!value) {
+                Swal.showValidationMessage('Password is required');
+                return false;
+            }
+            return value;
+        }
     }).then(async (result) => {
         if (!result.isConfirmed) return;
 
