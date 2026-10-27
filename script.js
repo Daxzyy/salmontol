@@ -38,6 +38,7 @@ function renderContent(data) {
         <div class="list"><span>Residence</span><div class="map"><i class="fa-solid fa-location-dot"></i> ${data.residence}</div></div>
         <div class="list"><span>DOB / Age</span><div class="text"><i class="fa-solid fa-cake-candles"></i> ${data.dob} (${age} Tahun)</div></div>
         <div class="list"><span>Religion</span><div class="text"><i class="fa-solid fa-kaaba"></i> ${data.religion}</div></div>
+        <div class="list"><span>School</span><div class="text"><i class="fa-solid fa-school"></i> ${data.school}</div></div>
         <div class="list"><span>WhatsApp</span><div class="link"><i class="fab fa-whatsapp"></i> <a href="${phoneLink}" target="_blank">${data.phone}</a></div></div>
         <div class="list"><span>Father's Name</span><div class="text"><i class="fa-solid fa-person"></i> ${data.father}</div></div>
         <div class="list"><span>Mother's Name</span><div class="text"><i class="fa-solid fa-person-dress"></i> ${data.mother}</div></div>
